@@ -17,7 +17,12 @@ export class Jumbotron extends React.Component {
     }
     
     render() {
-        if(!this.props.recentForecast) {
+        const { error, isLoaded} = this.state;
+        if (error) {
+            return <div>Error: {error.message}</div>;
+        } else if (!isLoaded) {
+        return <div>Loading...</div>;
+        } else if(!this.props.recentForecast) {
             return null;
         } else {
             return (

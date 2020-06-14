@@ -44,6 +44,12 @@ export class Location extends React.Component {
                         state: result.properties.relativeLocation.properties.state
                     })
                     return fetch(forecastURL)
+                },
+                (error) => {
+                    this.setState({
+                      isLoaded: true,
+                      error
+                    });
                 })
             .then(res => res.json())
             .then(
@@ -52,14 +58,26 @@ export class Location extends React.Component {
                         isLoaded: true,
                         periods: result.properties.periods
                     });
+                },
+                (error) => {
+                    this.setState({
+                      isLoaded: true,
+                      error
+                    });
                 })
         } 
     }
 
     render() {
-        const periods = this.state.periods;
-        return (
-            <div className="forecast">
+        const { error, isLoaded, periods} = this.state;
+
+        if(error) {
+            return <div>Error: {error.message}</div>;
+        } else if(!isLoaded) {
+            return <div>Loading...</div>;
+        } else {
+            return (
+                <div className="forecast">
                 <Jumbotron recentForecast={this.state.periods[0]} city={this.state.city} state={this.state.state}/>
                 <ul>
                     {periods.map(item => (
@@ -69,9 +87,10 @@ export class Location extends React.Component {
                     ))}
                 </ul>
             </div>
-        
-        );
+            );
         }
+    }
+
 };
 
 export default Location;
