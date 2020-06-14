@@ -1,0 +1,27 @@
+
+.container h1 {
+  max-width: 550px;
+  margin: 0px auto;
+  padding-bottom:50px;
+  font-size: 3em;
+
+}
+
+.container h3 {
+  padding-top:20px;
+}
+
+.container h2 {
+  padding-bottom:20px;
+}
+
+.container p {
+  padding-bottom:20px;
+}
+
+.jumbotron {
+  align-items: center;
+  text-align: center;
+  background-color: #6dc0d5;
+  color: #ffffff;
+}
