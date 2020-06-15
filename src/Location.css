@@ -1,0 +1,18 @@
+.location{
+    text-align: center;
+    
+}
+
+.location  tbody  tr  td p{
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 0px;
+    
+}
+
+.location  tbody  tr  td img{
+margin: auto;    
+padding: auto;
+}
+
+
